@@ -22,6 +22,18 @@ PMT::~PMT(){
 }
 
 void PMT::get_stream_types(std::vector<STREAM_TYPE*> &stream_types){
-    
+    uint32_t index = 12 + program_info_length;
+    while(index < section_length + 3 - 4){
+        STREAM_TYPE* stream_type = new STREAM_TYPE(PMT_data+index);
+        stream_types.push_back(stream_type);
+        index += 5+stream_type->ES_info_length;
+    }
 }
 
+void PMT::get_CRC_32(){
+
+}
+
+void PMT::check_type(uint32_t type){
+
+}

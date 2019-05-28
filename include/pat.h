@@ -3,6 +3,7 @@
 
 #include "def.h"
 #include "section.h"
+#include <vector>
 
 class PAT{
 public:

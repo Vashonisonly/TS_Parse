@@ -1,5 +1,4 @@
 #include "../include/pat.h"
-#include "../include/section.h"
 
 PAT::PAT(uint8_t* data):
     PAT_data(data),
@@ -12,7 +11,7 @@ PAT::PAT(uint8_t* data):
     section_number(data[6]),
     last_section_number(data[7]){
         if(table_id != 0x00){
-            std::cout<<"PAT table is error."<<std::endl;
+            /* */
         }
     }
 PAT::~PAT(){
@@ -23,8 +22,9 @@ void PAT::get_program_info(std::vector<PROGRAM_INFO*> &program_infos){
     int size =section_length - 9;
     int index = 8;
     for(int i=0; i<size; ++i){
-        PROGRAM_INFO* program_info = new PROGRAM_INFO(PAT_DATA+index);
+        PROGRAM_INFO* program_info = new PROGRAM_INFO(PAT_data+index);
         index+=4;
+        program_infos.push_back(program_info);
     }
 }
 

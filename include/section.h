@@ -22,9 +22,9 @@ public:
 
 public:
     uint32_t stream_type;              //8b
-    uint32_t reserved1;                //3b
+    // uint32_t reserved1;                //3b
     uint32_t elementry_PID;            //13b
-    uint32_t reserved2;                //4b
+    // uint32_t reserved2;                //4b
     uint32_t ES_info_length;           //12b
 };
 #endif
