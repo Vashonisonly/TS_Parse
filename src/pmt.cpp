@@ -1,6 +1,6 @@
 #include "../include/pmt.h"
 
-PMT::PMT(uint8_t* data):
+PMT::PMT(char* data):
     PMT_data(data),
     table_id(PMT_data[0]),
     section_syntax_indicator((PMT_data[1]&0x80)>>7),
@@ -22,7 +22,7 @@ PMT::~PMT(){
 }
 
 void PMT::get_stream_types(std::vector<STREAM_TYPE*> &stream_types){
-    uint32_t index = 12 + program_info_length;
+    unsigned int index = 12 + program_info_length;
     while(index < section_length + 3 - 4){
         STREAM_TYPE* stream_type = new STREAM_TYPE(PMT_data+index);
         stream_types.push_back(stream_type);
@@ -34,6 +34,6 @@ void PMT::get_CRC_32(){
 
 }
 
-void PMT::check_type(uint32_t type){
+void PMT::check_type(unsigned int type){
 
 }

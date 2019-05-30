@@ -1,6 +1,6 @@
 #include "../include/tsheader.h"
 
-TSHEADER::TSHEADER(uint8_t* data):
+TSHEADER::TSHEADER(char* data):
     TSHEADER_data(data),
     syntax_indicator(TSHEADER_data[0]),
     transport_error_indicator((data[1]&0x80)>>7),

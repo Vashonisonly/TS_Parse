@@ -1,5 +1,6 @@
 #ifndef _ANALYSIS_H
 #define _ANALYSIS_H
+#include "pes.h"
 #include "pat.h"
 #include "pmt.h"
 #include "tsheader.h"
@@ -21,24 +22,25 @@ public:
     ANALYSIS(char* file);
     ~ANALYSIS();
     //判断TS包长是否是188字节
-    uint32_t get_packet_length(FILE* fp);
+    unsigned int get_packet_length(FILE* fp);
     //获取节目信息到map里面
-    void get_infos(map<uint32_t, vector<STREAM_TYPE*>> &infos);
+    void get_infos();
     //获取pes文件，es文件
-    void get_pes_es(uint32_t pid);
+    void get_pes_es(unsigned int pid);
 
 private:
     PAT* pat;
     PMT* pmt;
+    PES* pes;
     TSHEADER* tsheader;
-    int8_t* ts_path;
+    char* ts_path;
 
-    uint32_t packet_length = 0;
-    uint32_t packet_start_position = 0;
+    unsigned int packet_length = 0;
+    unsigned int packet_start_position = 0;
     //存储PAT表中的节目信息。
     vector<PROGRAM_INFO*> program_infos;
     //将节目信息中的PID值与PMT表分别匹配
-    map<uint32_t, vector<STREAM_TYPE*>> infos;
+    map<unsigned int, vector<STREAM_TYPE*>> infos;
 
 };
 #endif

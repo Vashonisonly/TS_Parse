@@ -1,6 +1,6 @@
 #include "../include/pat.h"
 
-PAT::PAT(uint8_t* data):
+PAT::PAT(char* data):
     PAT_data(data),
     table_id(data[0]),
     section_syntax_indicator((data[1]&0x80)>>7),
