@@ -1,5 +1,23 @@
 #include "../include/analysis.h"
 
+map<int, string> stream_type_map = {{0x1B, "MPEG-4 H264-video"},{0x0F,"MPEG-2 AAC-audio"},
+                                    {0x01, "MPEG-1 video"},{0x03, "MPEG-1 audio"},
+                                    {0x02, "MPEG-2 higher video"},{0x04, "MPEG-2 haved audio"},
+                                    {0x07, "ISO-IEC MGEG"},{0x08, "DSM CC"},
+                                    {0x09, "AUXIARILY"},{0x0E, "AUXIARILY"},
+                                    {0x10, "MPEG-4 H263-video"},{0x11, "MPEG-4 LAOS-audio"},
+                                    {0x12, "MPEG-4 FlexMux"},{0x24, "H265-video"},
+                                    {0x42, "AVS-video"},{0x80, "BLUE-RAY-audio"},
+                                    {0x81, "BLUE-RAY-audio"},{0x82, "BLUE-RAY-audio"},
+                                    {0x83, "BLUE-RAY-audio"},{0x84, "BLUE-RAY-audio"},
+                                    {0x85, "BLUE-RAY-audio"},{0x86, "BLUE-RAY-audio"},
+                                    {0x87, "ATSC-audio"},{0x90, "subtiting"},
+                                    {0xc0, "Digiciper"},{0xc1, "Dolby Digital"},
+                                    {0xc2, "ATSC DSM CC"},{0xCF, "ISO-IEC ACC"},
+                                    {0xD1, "BBC Dirc"},{0xDB, "ITU-T H264"},
+                                    {0xEA, "WIN video-9"}
+                     };
+
 ANALYSIS::ANALYSIS(char *file){
     ts_path = file;
     get_infos();
@@ -7,7 +25,7 @@ ANALYSIS::ANALYSIS(char *file){
     for(auto it = infos.begin(); it != infos.end(); ++it){
         printf("the PMT PID is : %d\n",(*it).first);
         for(auto stream_it = (*it).second.begin(); stream_it != (*it).second.end(); ++stream_it){
-            printf("the STREAM_TYPE is: %d, it's PID is: %d\n",(*stream_it)->stream_type,(*stream_it)->elementry_PID);
+            printf("the STREAM_TYPE is: %s, it's PID is: %d\n",stream_type_map[(*stream_it)->stream_type].c_str(),(*stream_it)->elementry_PID);
         }
     }
     printf("plese enter the PID which you want to save:\n");
