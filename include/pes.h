@@ -6,8 +6,7 @@ class PES{
 public:
     PES(char* data);
     ~PES();
-    
-    void adapate_data();
+
 public:
     char* PES_data;
     //存储es包的起始位置
