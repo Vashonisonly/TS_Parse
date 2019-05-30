@@ -1,7 +1,6 @@
 #ifndef _SECTION_H
 #define _SECTION_H
 
-#include "def.h"
 
 class PROGRAM_INFO{
 

@@ -8,9 +8,9 @@ using namespace std;
 
 int main(int argc,char* argv[])
 {
-    if(argc == 1){
-        printf("please input the ts file as argument\n");
-    }
-    ANALYSIS* analysis = new ANALYSIS(argv[1]);
-    delete analysis;
+//    if(argc == 1){
+//        printf("please input the ts file as argument\n");
+//    }
+    char ts_file[] = "/home/vashon/clion/my_programs/src/test.ts";
+    ANALYSIS* analysis = new ANALYSIS(ts_file);
 }

@@ -1,7 +1,6 @@
 #ifndef _PAT_H
 #define _PAT_H
 
-#include "def.h"
 #include "section.h"
 #include <vector>
 

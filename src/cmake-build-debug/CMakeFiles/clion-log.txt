@@ -1,0 +1,4 @@
+/home/vashon/clion/clion-2019.1.3/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/vashon/clion/my_programs/src
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vashon/clion/my_programs/src/cmake-build-debug

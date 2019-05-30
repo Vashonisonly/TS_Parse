@@ -1,7 +1,6 @@
 #ifndef _TSHEADER_H
 #define _TSHEADER_H
 
-#include "def.h"
 
 class TSHEADER{
 public:
