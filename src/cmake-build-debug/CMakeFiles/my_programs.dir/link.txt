@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/my_programs.dir/ts_parse.cpp.o CMakeFiles/my_programs.dir/analysis.cpp.o CMakeFiles/my_programs.dir/pat.cpp.o CMakeFiles/my_programs.dir/pes.cpp.o CMakeFiles/my_programs.dir/pmt.cpp.o CMakeFiles/my_programs.dir/section.cpp.o CMakeFiles/my_programs.dir/tsheader.cpp.o  -o my_programs 

@@ -1,3 +1,0 @@
-/home/vashon/clion/my_programs/src/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/vashon/clion/my_programs/src/cmake-build-debug/CMakeFiles/my_programs.dir
-/home/vashon/clion/my_programs/src/cmake-build-debug/CMakeFiles/edit_cache.dir

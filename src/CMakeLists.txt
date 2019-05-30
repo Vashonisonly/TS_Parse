@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.14)
-project(my_programs)
+cmake_minimum_required(VERSION 3.9)
+project(ts_parse_out)
 
 set(CMAKE_CXX_STANDARD 11)
 

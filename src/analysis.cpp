@@ -4,7 +4,16 @@ ANALYSIS::ANALYSIS(char *file){
     ts_path = file;
     get_infos();
     printf("the pid's read had finished---\n");
-    get_pes_es(4113);
+    for(auto it = infos.begin(); it != infos.end(); ++it){
+        printf("the PMT PID is : %d\n",(*it).first);
+        for(auto stream_it = (*it).second.begin(); stream_it != (*it).second.end(); ++stream_it){
+            printf("the STREAM_TYPE is: %d, it's PID is: %d\n",(*stream_it)->stream_type,(*stream_it)->elementry_PID);
+        }
+    }
+    printf("plese enter the PID which you want to save:\n");
+    unsigned int PID = 0;
+    scanf("%d", &PID);
+    get_pes_es(PID);
 }
 
 ANALYSIS::~ANALYSIS(){
@@ -145,8 +154,8 @@ void ANALYSIS::get_infos(){
 
 void ANALYSIS::get_pes_es(unsigned int pid){
     FILE* ts_fp = fopen(ts_path, "rb");
-    FILE* pes_fp = fopen("/home/vashon/clion/my_programs/src/test.pes", "wb");
-    FILE* es_fp = fopen("/home/vashon/clion/my_programs/src/test.es", "wb");
+    FILE* pes_fp = fopen("../src/test.pes", "wb");
+    FILE* es_fp = fopen("../src/test.es", "wb");
     unsigned int ts_position = 0;
     unsigned int read_size = 0;
     unsigned int received_length = 0;
