@@ -46,7 +46,7 @@ bool ANALYSIS::execute_parse(){
 }
 
 
-unsigned int judge_packet_length(FILE* fp, uint32_t ts_position, uint32_t length){
+unsigned int judge_packet_length(FILE* fp, unsigned int ts_position, unsigned int length){
 
     if(fseek(fp, ts_position + 1, SEEK_SET)== -1){
         perror("seek lose:");
@@ -103,7 +103,6 @@ bool ANALYSIS::get_infos(){
     unsigned int payload_position = 0;
     unsigned int pat_exit_flag = 0;
     unsigned int program_infos_size = 0;
-    unsigned int current_pids = 0;
     char* buffer_data = new char[packet_length];
     //跳跃到第一个包的位置
     fseek(fp, ts_position, SEEK_SET);
@@ -153,7 +152,7 @@ bool ANALYSIS::get_infos(){
         }else{
 
             pmt = new PMT(buffer_data + payload_position);
-            if(pmt->table_id == 0x02){
+            if(program_infos_size && (pmt->table_id == 0x02)){
 
                 for(auto program_it = program_infos.begin(); program_it != program_infos.end(); ++program_it){
 
@@ -162,7 +161,7 @@ bool ANALYSIS::get_infos(){
                         vector<STREAM_TYPE*> stream_types;
                         pmt->get_stream_types(stream_types);
                         infos.insert(make_pair((*program_it)->PMT_PID, stream_types));
-                        if(++current_pids == program_infos_size){
+                        if(infos.size() == program_infos_size){
                             return 1;
                         }
                        // for(auto stream_it = stream_types.begin(); stream_it != stream_types.end(); ++stream_it){
