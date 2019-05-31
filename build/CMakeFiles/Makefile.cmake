@@ -42,5 +42,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/my_programs.dir/DependInfo.cmake"
+  "CMakeFiles/ts_parse.out.dir/DependInfo.cmake"
   )

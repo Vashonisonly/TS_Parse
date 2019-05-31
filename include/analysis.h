@@ -24,9 +24,11 @@ public:
     //判断TS包长是否是188字节
     unsigned int get_packet_length(FILE* fp);
     //获取节目信息到map里面
-    void get_infos();
+    bool get_infos();
     //获取pes文件，es文件
     void get_pes_es(unsigned int pid);
+
+    bool execute_parse();
 
 private:
     PAT* pat;

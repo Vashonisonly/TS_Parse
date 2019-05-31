@@ -20,7 +20,17 @@ map<int, string> stream_type_map = {{0x1B, "MPEG-4 H264-video"},{0x0F,"MPEG-2 AA
 
 ANALYSIS::ANALYSIS(char *file){
     ts_path = file;
-    get_infos();
+}
+
+ANALYSIS::~ANALYSIS(){
+
+}
+
+bool ANALYSIS::execute_parse(){
+    if(!get_infos()){
+        printf("get the pid infos lose!\n");
+        return -1;   
+    }
     printf("the pid's read had finished---\n");
     for(auto it = infos.begin(); it != infos.end(); ++it){
         printf("the PMT PID is : %d\n",(*it).first);
@@ -32,13 +42,8 @@ ANALYSIS::ANALYSIS(char *file){
     unsigned int PID = 0;
     scanf("%d", &PID);
     get_pes_es(PID);
+    return 1;
 }
-
-ANALYSIS::~ANALYSIS(){
-
-}
-
-
 
 
 unsigned int judge_packet_length(FILE* fp, uint32_t ts_position, uint32_t length){
@@ -84,13 +89,13 @@ unsigned int ANALYSIS::get_packet_length(FILE* fp){
     return -1;
 }
 
-void ANALYSIS::get_infos(){
+bool ANALYSIS::get_infos(){
 
     //获取ts包的长度
     FILE* fp = fopen(ts_path, "rb");
     if(fp == NULL){
         perror("open the ts file lose:");
-        return;
+        return -1;
     }
     unsigned int ts_position = packet_start_position;
     packet_length = get_packet_length(fp);
@@ -107,14 +112,14 @@ void ANALYSIS::get_infos(){
         //将当前包存入buffer_data
         if(fread(buffer_data, packet_length, 1, fp) == 0){
            perror("fread error:");
-           return;
+           return -1;
         }
 
         //跳跃到下一个包
         ts_position += packet_length;
         if(fseek(fp, ts_position, SEEK_SET) == -1){
           perror("get_infos fseek error:");
-          return;
+          return -1;
         }
 
         //通过包头tsheader判断payload位置
@@ -158,7 +163,7 @@ void ANALYSIS::get_infos(){
                         pmt->get_stream_types(stream_types);
                         infos.insert(make_pair((*program_it)->PMT_PID, stream_types));
                         if(++current_pids == program_infos_size){
-                            return;
+                            return 1;
                         }
                        // for(auto stream_it = stream_types.begin(); stream_it != stream_types.end(); ++stream_it){
                        //     infos.insert(make_pair((*stream_it)->elementry_PID, )
@@ -168,12 +173,13 @@ void ANALYSIS::get_infos(){
             }
         }
     }    
+    return 1;
 }
 
 void ANALYSIS::get_pes_es(unsigned int pid){
     FILE* ts_fp = fopen(ts_path, "rb");
-    FILE* pes_fp = fopen("../src/test.pes", "wb");
-    FILE* es_fp = fopen("../src/test.es", "wb");
+    FILE* pes_fp = fopen("demo.pes", "wb");
+    FILE* es_fp = fopen("demo.es", "wb");
     unsigned int ts_position = 0;
     unsigned int read_size = 0;
     unsigned int received_length = 0;
@@ -253,7 +259,8 @@ void ANALYSIS::get_pes_es(unsigned int pid){
         current_p += packet_length;
     }
 }
-    printf("the packet number is: %d\n",es_packet_count);
+    printf("the packet number is: %d\n"
+           "and the demo.pes, demo.es has been saved at current directory.\n",es_packet_count);
     if(es_buffer){
         free(es_buffer);
     }

@@ -60,39 +60,39 @@ CMAKE_SOURCE_DIR = /home/vashon/ts_parse/src
 CMAKE_BINARY_DIR = /home/vashon/ts_parse/build
 
 #=============================================================================
-# Target rules for target CMakeFiles/my_programs.dir
+# Target rules for target CMakeFiles/ts_parse.out.dir
 
 # All Build rule for target.
-CMakeFiles/my_programs.dir/all:
-	$(MAKE) -f CMakeFiles/my_programs.dir/build.make CMakeFiles/my_programs.dir/depend
-	$(MAKE) -f CMakeFiles/my_programs.dir/build.make CMakeFiles/my_programs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/vashon/ts_parse/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target my_programs"
-.PHONY : CMakeFiles/my_programs.dir/all
+CMakeFiles/ts_parse.out.dir/all:
+	$(MAKE) -f CMakeFiles/ts_parse.out.dir/build.make CMakeFiles/ts_parse.out.dir/depend
+	$(MAKE) -f CMakeFiles/ts_parse.out.dir/build.make CMakeFiles/ts_parse.out.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/vashon/ts_parse/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target ts_parse.out"
+.PHONY : CMakeFiles/ts_parse.out.dir/all
 
 # Include target in all.
-all: CMakeFiles/my_programs.dir/all
+all: CMakeFiles/ts_parse.out.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/my_programs.dir/rule: cmake_check_build_system
+CMakeFiles/ts_parse.out.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/vashon/ts_parse/build/CMakeFiles 8
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/my_programs.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ts_parse.out.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/vashon/ts_parse/build/CMakeFiles 0
-.PHONY : CMakeFiles/my_programs.dir/rule
+.PHONY : CMakeFiles/ts_parse.out.dir/rule
 
 # Convenience name for target.
-my_programs: CMakeFiles/my_programs.dir/rule
+ts_parse.out: CMakeFiles/ts_parse.out.dir/rule
 
-.PHONY : my_programs
-
-# clean rule for target.
-CMakeFiles/my_programs.dir/clean:
-	$(MAKE) -f CMakeFiles/my_programs.dir/build.make CMakeFiles/my_programs.dir/clean
-.PHONY : CMakeFiles/my_programs.dir/clean
+.PHONY : ts_parse.out
 
 # clean rule for target.
-clean: CMakeFiles/my_programs.dir/clean
+CMakeFiles/ts_parse.out.dir/clean:
+	$(MAKE) -f CMakeFiles/ts_parse.out.dir/build.make CMakeFiles/ts_parse.out.dir/clean
+.PHONY : CMakeFiles/ts_parse.out.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/ts_parse.out.dir/clean
 
 .PHONY : clean
 
