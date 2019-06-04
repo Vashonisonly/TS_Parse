@@ -25,7 +25,9 @@ void PAT::get_program_info(std::vector<PROGRAM_INFO*> &program_infos){
     for(int i=0; i<size; ++i){
         PROGRAM_INFO* program_info = new PROGRAM_INFO(PAT_data+index);
         index+=4;
-        program_infos.push_back(program_info);
+        if(program_info->program_number) {
+            program_infos.push_back(program_info);
+        }
     }
 }
 
