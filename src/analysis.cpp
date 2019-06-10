@@ -149,8 +149,8 @@ bool ANALYSIS::get_infos(){
             pat->get_program_info(program_infos);
             pat_exit_flag = 1;
             program_infos_size = program_infos.size();
-        }else{
-
+        }else if(pat_exit_flag){
+            //也可以先根据PAT表算出PMT表的PID值，由ts header直接判断出是不是PMT，再进入处理
             pmt = new PMT(buffer_data + payload_position);
             if(program_infos_size && (pmt->table_id == 0x02)){
 
@@ -170,8 +170,10 @@ bool ANALYSIS::get_infos(){
                     }
                 }
             }
+        }else{
+            continue;
         }
-    }    
+    }   
     return 1;
 }
 
