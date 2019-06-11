@@ -23,7 +23,10 @@ ANALYSIS::ANALYSIS(char *file){
 }
 
 ANALYSIS::~ANALYSIS(){
-
+    delete pat;
+    delete pmt;
+    delete pes;
+    delete tsheader;
 }
 
 bool ANALYSIS::execute_parse(){
@@ -82,7 +85,7 @@ unsigned int ANALYSIS::get_packet_length(FILE* fp){
             if(judge_packet_length(fp,packet_start_position,PACKET_LENGTH_204) == PACKET_LENGTH_204){
                 return PACKET_LENGTH_204;
             }
-            return -1;
+            fseek(fp, packet_start_position, SEEK_SET);
         }
         packet_start_position++;
     }
